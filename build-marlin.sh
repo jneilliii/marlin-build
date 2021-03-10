@@ -64,9 +64,9 @@ if [[ ${success} -eq 0 ]]; then
 
   printf "\nCopying compiled firmware to output folder..\n"
   cd /home/platformio/Marlin/.pio/build/$BOARD
-  FIRMWARE_NAME=$(find . -name '*.bin' -type f -exec basename {} .bin ';')
-  md5sum $FIRMWARE_NAME.bin > $OUTPUT_DIR/$FIRMWARE_NAME.md5
-  cp $FIRMWARE_NAME.bin $OUTPUT_DIR
+  FIRMWARE_NAME=$(find . -name '*.hex' -type f -exec basename {} .hex ';')
+  md5sum $FIRMWARE_NAME.hex > $OUTPUT_DIR/$FIRMWARE_NAME.md5
+  cp $FIRMWARE_NAME.hex $OUTPUT_DIR
 
   printf "\nValidating firmware checksum.."
   if md5sum -c $OUTPUT_DIR/$FIRMWARE_NAME.md5;
